@@ -7,11 +7,13 @@ import postRoutes from "./routes/posts.js";
 
 const app = express();
 
-app.use('/posts', postRoutes);
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+
+// routes should come after cors
+app.use('/posts', postRoutes);
 
 // https://www.mongodb.com/cloud/atlas we need to connect to our database
 
